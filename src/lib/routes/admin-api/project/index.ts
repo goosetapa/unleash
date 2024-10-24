@@ -55,9 +55,10 @@ export default class ProjectApi extends Controller {
     ): Promise<void> {
         const { user } = req;
         const projects = await this.projectService.getProjects(
-            {
-                id: 'default',
-            },
+            // {
+            //     id: 'default',
+            // },
+            {},
             user.id,
         );
 

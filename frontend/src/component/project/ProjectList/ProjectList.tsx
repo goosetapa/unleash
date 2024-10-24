@@ -40,7 +40,7 @@ function resolveCreateButtonData(
     isOss: boolean,
     hasAccess: boolean
 ): ICreateButtonData {
-    if (isOss) {
+/*    if (isOss) {
         return {
             disabled: true,
             tooltip: {
@@ -59,12 +59,12 @@ function resolveCreateButtonData(
             },
             disabled: true,
         };
-    } else {
+    } else { */
         return {
             tooltip: { title: 'Click to create a new project' },
             disabled: false,
         };
-    }
+    //}
 }
 
 export const ProjectListNew = () => {

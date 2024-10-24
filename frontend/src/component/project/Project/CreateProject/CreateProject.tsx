@@ -36,7 +36,8 @@ const CreateProject = () => {
         e.preventDefault();
         clearErrors();
         const validName = validateName();
-        const validId = await validateProjectId();
+        // const validId = await validateProjectId();
+        const validId = true;
 
         if (validName && validId) {
             const payload = getProjectPayload();

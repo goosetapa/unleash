@@ -1,4 +1,4 @@
-import { IInstanceStatus, InstancePlan } from 'interfaces/instance';
+import { IInstanceStatus, InstancePlan, InstanceState } from 'interfaces/instance';
 import { useApiGetter } from 'hooks/api/getters/useApiGetter/useApiGetter';
 import { formatApiPath } from 'utils/formatPath';
 import useUiConfig from 'hooks/api/getters/useUiConfig/useUiConfig';
@@ -46,17 +46,27 @@ export const useInstanceStatus = (): IUseInstanceStatusOutput => {
 const fetchInstanceStatus = async (
     UNLEASH_CLOUD?: boolean
 ): Promise<IInstanceStatus> => {
-    if (!UNLEASH_CLOUD) {
-        return UNKNOWN_INSTANCE_STATUS;
-    }
+    // if (!UNLEASH_CLOUD) {
+    //     return UNKNOWN_INSTANCE_STATUS;
+    // }
 
-    const res = await fetch(formatApiPath('api/instance/status'));
+    // 실제 API 호출 대신 하드코딩된 값 반환
+    return {
+        plan: InstancePlan.PRO,
+        state: InstanceState.ACTIVE,
+        seats: 5,
+        trialExpiry: "2034-04-20T00:00:00.000Z",
+        trialStart: "2024-03-20T00:00:00.000Z",
+        billingCenter: "stripe",
+        trialExtended: 0
+    };
 
-    if (!res.ok) {
-        return UNKNOWN_INSTANCE_STATUS;
-    }
-
-    return res.json();
+    // 기존 API 호출 코드는 주석 처리
+    // const res = await fetch(formatApiPath('api/instance/status'));
+    // if (!res.ok) {
+    //     return UNKNOWN_INSTANCE_STATUS;
+    // }
+    // return res.json();
 };
 
 export const UNKNOWN_INSTANCE_STATUS: IInstanceStatus = {

@@ -89,7 +89,8 @@ export const BillingPlan: FC<IBillingPlanProps> = ({ instanceStatus }) => {
     const paidAssigned = users.length - freeAssigned;
     const paidAssignedPrice = price.user * paidAssigned;
     const finalPrice = planPrice + paidAssignedPrice;
-    const inactive = instanceStatus.state !== InstanceState.ACTIVE;
+    // const inactive = instanceStatus.state !== InstanceState.ACTIVE;
+    const inactive = false;
 
     return (
         <Grid item xs={12} md={7}>
